@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the delicious Nigerian food menu at House of Rome's LD Life.">
+  <title>House of Rome's LD Life | Food Menu</title>
+  <style>
+    :root {
+      --ink: #24170f;
+      --muted: #76665b;
+      --cream: #fffaf2;
+      --paper: #ffffff;
+      --orange: #e66a24;
+      --deep: #762f19;
+      --gold: #f4bd55;
+      --line: #f0e4d5;
+      --shadow: 0 12px 32px rgba(66, 36, 18, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      background: var(--deep);
+      color: #fff4e8;
+      text-align: center;
+      padding: 9px 16px;
+      font-size: .88rem;
+      letter-spacing: .04em;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,250,242,.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      max-width: 1160px;
+      margin: auto;
+      padding: 15px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; }
+    .brand-mark {
+      width: 43px; height: 43px; border-radius: 50%;
+      display: grid; place-items: center;
+      color: var(--deep); background: var(--gold);
+      font-weight: 900; font-size: 1.1rem;
+    }
+    .brand-name { font-weight: 900; line-height: 1.15; font-size: 1rem; }
+    .brand-name span { display: block; color: var(--orange); font-size: .72rem; letter-spacing: .18em; margin-top: 4px; }
+    nav { display: flex; gap: 25px; align-items: center; font-size: .94rem; font-weight: 700; }
+    nav a:hover { color: var(--orange); }
+    .nav-cta, .button {
+      display: inline-block; background: var(--orange); color: white;
+      padding: 11px 19px; border-radius: 999px; font-weight: 800;
+    }
+    .hero {
+      max-width: 1160px; margin: auto; padding: 64px 22px 58px;
+      display: grid; grid-template-columns: 1.05fr .95fr; gap: 42px; align-items: center;
+    }
+    .eyebrow { color: var(--orange); font-weight: 900; letter-spacing: .16em; text-transform: uppercase; font-size: .78rem; }
+    h1 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2.7rem, 5vw, 4.8rem); line-height: 1.04; margin: 13px 0 18px; }
+    h1 em { color: var(--orange); font-style: normal; }
+    .hero p { color: var(--muted); font-size: 1.08rem; max-width: 510px; margin-bottom: 27px; }
+    .hero-image { position: relative; }
+    .hero-image img {
+      display: block; width: 100%; height: 430px; object-fit: cover;
+      border-radius: 28px 28px 90px 28px; box-shadow: var(--shadow);
+    }
+    .image-note {
+      position: absolute; left: -18px; bottom: 22px; background: white;
+      padding: 13px 18px; border-radius: 14px; box-shadow: var(--shadow);
+      font-weight: 800;
+    }
+    .image-note small { display: block; color: var(--muted); font-weight: 500; }
+    .section { max-width: 1160px; margin: auto; padding: 48px 22px; }
+    .section-heading { text-align: center; margin-bottom: 28px; }
+    .section-heading h2 { font: 700 clamp(2rem, 3vw, 2.8rem) Georgia, serif; margin: 7px 0; }
+    .section-heading p { color: var(--muted); margin: 0; }
+    .category-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 25px 0 32px; }
+    .category-links a {
+      border: 1px solid var(--line); background: white; border-radius: 999px;
+      padding: 9px 16px; font-size: .9rem; font-weight: 700;
+    }
+    .category-links a:hover { background: var(--deep); color: white; }
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .food-card {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 19px;
+      overflow: hidden; box-shadow: 0 5px 18px rgba(66,36,18,.045);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .food-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .food-card img { width: 100%; height: 205px; object-fit: cover; display: block; }
+    .food-info { padding: 17px 18px 19px; }
+    .food-title-row { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+    .food-title-row h3 { margin: 0; font-size: 1.12rem; }
+    .price { color: var(--orange); font-weight: 900; white-space: nowrap; }
+    .food-info p { color: var(--muted); font-size: .91rem; margin: 9px 0 0; }
+    .tag { display: inline-block; margin-top: 12px; font-size: .72rem; color: var(--deep); background: #fff0dc; padding: 4px 9px; border-radius: 99px; font-weight: 800; }
+    .notice {
+      margin-top: 25px; padding: 13px 16px; border-left: 4px solid var(--gold);
+      background: #fff3df; color: #69503a; border-radius: 8px; font-size: .88rem;
+    }
+    .feature {
+      background: #2b1b13; color: white; margin-top: 25px;
+    }
+    .feature-inner {
+      max-width: 1160px; margin: auto; padding: 48px 22px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 35px; align-items: center;
+    }
+    .feature img { width: 100%; height: 300px; object-fit: cover; border-radius: 20px; }
+    .feature h2 { font: 700 2.4rem Georgia, serif; margin: 8px 0 12px; }
+    .feature p { color: #e7d8cb; }
+    .feature .eyebrow { color: var(--gold); }
+    .footer {
+      background: #1d120d; color: #f9eade; padding: 28px 22px; text-align: center;
+    }
+    .footer strong { color: var(--gold); }
+    .footer p { margin: 5px 0; color: #d8c6b8; font-size: .9rem; }
+    @media (max-width: 800px) {
+      .hero, .feature-inner { grid-template-columns: 1fr; }
+      .hero { padding-top: 42px; }
+      .hero-image img { height: 330px; }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      nav { gap: 13px; font-size: .85rem; }
+    }
+    @media (max-width: 560px) {
+      .nav { flex-wrap: wrap; }
+      nav { width: 100%; justify-content: space-between; order: 2; }
+      .nav-cta { padding: 9px 13px; font-size: .85rem; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .food-card img { height: 225px; }
+      .image-note { left: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">GOOD FOOD. BIG FLAVOUR. A TASTE OF NIGERIA.</div>
+
+  <header>
+    <div class="nav">
+      <a class="brand" href="#home" aria-label="House of Rome's LD Life home">
+        <div class="brand-mark">R</div>
+        <div class="brand-name">HOUSE OF ROME'S LD LIFE<span>RESTAURANT &amp; GRILL</span></div>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#menu">Our Menu</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="#menu">View Menu</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <div class="eyebrow">Welcome to our table</div>
+        <h1>Real Nigerian food.<br><em>Unforgettable flavour.</em></h1>
+        <p>From smoky party jollof to rich catfish pepper soup, enjoy familiar Nigerian favourites prepared with flavour in every serving.</p>
+        <a class="button" href="#menu">Explore the menu</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&amp;fit=crop&amp;w=1100&amp;q=85" alt="A colourful plate of rice and vegetables">
+        <div class="image-note">Made with flavour <small>Freshly prepared, every time</small></div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="section-heading">
+        <div class="eyebrow">Food worth coming back for</div>
+        <h2>Our Menu</h2>
+        <p>Choose a favourite and enjoy a proper, satisfying meal.</p>
+      </div>
+
+      <div class="category-links">
+        <a href="#rice">Rice dishes</a>
+        <a href="#pasta">Spaghetti &amp; pasta</a>
+        <a href="#fish">Fish &amp; soups</a>
+        <a href="#sides">Sides</a>
+      </div>
+
+      <h2 id="rice">Rice Dishes</h2>
+      <div class="menu-grid">
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Jollof rice served with sides" loading="lazy">
+          <div class="food-info"><div class="food-title-row"><h3>Classic Jollof Rice</h3><span class="price">₦3,500</span></div><p>Rich tomato-and-pepper rice, cooked with our signature seasoning.</p><span class="tag">CUSTOMER FAVOURITE</span></div>
+        </article>
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Fried rice with vegetables" loading="lazy">
+          <div class="food-info"><div class="food-title-row"><h3>Nigerian Fried Rice</h3><span class="price">₦4,000</span></div><p>Colourful rice tossed with vegetables and savoury spices.</p></div>
+        </article>
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Freshly prepared vegetable side dish" loading="lazy">
+          <div class="food-info"><div class="food-title-row"><h3>Jollof &amp; Fried Rice Combo</h3><span class="price">₦4,500</span></div><p>A generous serving of two rice favourites on one plate.</p></div>
+        </article>
+      </div>
+
+      <h2 id="pasta" style="margin-top:42px">Spaghetti &amp; Pasta</h2>
+      <div class="menu-grid">
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Spaghetti with tomato sauce" loading="lazy">
+          <div class="food-info"><div class="food-title-row"><h3>Jollof Spaghetti</h3><span class="price">₦3,500</span></div><p>Spaghetti cooked in a delicious Nigerian pepper and tomato sauce.</p><span class="tag">POPULAR</span></div>
+        </article>
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="A plate of pasta" loading="lazy">
+          <div class="food-info"><div class="food-title-row"><h3>Stir-fry Spaghetti</h3><span class="price">₦4,000</span></div><p>Spaghetti stir-fried with vegetables, peppers and seasoning.</p></div>
+        </article>
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Pasta dish" loading="lazy">
+          <div class="food-info"><div class="food-title-row"><h3>Spaghetti Special</h3><span class="price">₦4,500</span></div><p>A hearty spaghetti serving with our house sauce and vegetables.</p></div>
+        </article>
+      </div>
+
+      <h2 id="fish" style="margin-top:42px">Fish &amp; Soups</h2>
+      <div class="menu-grid">
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Grilled fish served with lemon" loading="lazy">
+          <div class="food-info"><div class="food-title-row"><h3>Smoked Catfish</h3><span class="price">₦5,000</span></div><p>Smoky, flavourful catfish, carefully seasoned and prepared.</p><span class="tag">HOUSE SPECIAL</span></div>
+        </article>
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="A bowl of rich soup" loading="lazy">
+          <div class="food-info"><div class="food-title-row"><h3>Catfish Pepper Soup</h3><span class="price">₦6,000</span></div><p>Hot, aromatic pepper soup with catfish and traditional spices.</p></div>
+        </article>
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Fish cooked with herbs and spices" loading="lazy">
+          <div class="food-info"><div class="food-title-row"><h3>Peppered Fish</h3><span class="price">₦5,500</span></div><p>Fish coated in a bold pepper sauce with a tasty smoky finish.</p></div>
+        </article>
+      </div>
+
+      <h2 id="sides" style="margin-top:42px">Sides &amp; Extras</h2>
+      <div class="menu-grid">
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Golden fried plantain" loading="lazy">
+          <div class="food-info"><div class="food-title-row"><h3>Fried Plantain</h3><span class="price">₦1,000</span></div><p>Sweet ripe plantain, fried until golden.</p></div>
+        </article>
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="Golden potato chips" loading="lazy">
+          <div class="food-info"><div class="food-title-row"><h3>Chips</h3><span class="price">₦1,500</span></div><p>Crispy, golden chips served as a tasty side.</p></div>
+        </article>
+        <article class="food-card">
+          <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&amp;fit=crop&amp;w=800&amp;q=85" alt="A bowl of sauce" loading="lazy">
+          <div class="food-info"><div class="food-title-row"><h3>Extra Sauce</h3><span class="price">₦500</span></div><p>Add an extra helping of our rich house sauce.</p></div>
+        </article>
+      </div>
+      <div class="notice">Menu note: Prices shown are sample prices for the website design. Confirm and replace them with the restaurant's actual prices before printing or publishing. Food photographs are illustrative.</div>
+    </section>
+
+    <section class="feature" id="about">
+      <div class="feature-inner">
+        <div>
+          <div class="eyebrow">A little about us</div>
+          <h2>Good food brings people together.</h2>
+          <p>At House of Rome's LD Life, we celebrate the bold flavours and comforting dishes that make Nigerian food special. Whether you are craving jollof rice, spaghetti or smoked catfish, there is something delicious waiting on the menu.</p>
+          <a class="button" href="#menu">See what we're serving</a>
+        </div>
+        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="A table filled with freshly prepared food" loading="lazy">
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-heading">
+        <div class="eyebrow">Come visit us</div>
+        <h2>Contact &amp; Opening Hours</h2>
+        <p>We look forward to serving you at House of Rome's LD Life.</p>
+      </div>
+      <div class="menu-grid">
+        <article class="food-card">
+          <div class="food-info">
+            <span class="eyebrow">Our location</span>
+            <h3>Ido, Ibadan</h3>
+            <p>Oyo State, Nigeria</p>
+          </div>
+        </article>
+        <article class="food-card">
+          <div class="food-info">
+            <span class="eyebrow">Call us</span>
+            <h3>+234 000 000 0000</h3>
+            <p>Sample number for website design. Replace it with the restaurant's real phone number before publishing.</p>
+          </div>
+        </article>
+        <article class="food-card">
+          <div class="food-info">
+            <span class="eyebrow">Opening hours</span>
+            <h3>9:00 a.m. – 12:00 midnight</h3>
+            <p>Every day</p>
+          </div>
+        </article>
+      </div>
+      <div class="notice">
+        Website address: <strong>www.houseofromLDlife.com</strong> (proposed domain; it will work publicly after the domain is registered and the website is hosted).
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <strong>HOUSE OF ROME'S LD LIFE</strong>
+    <p>Good food. Big flavour. A taste of Nigeria.</p>
+    <p>Ido, Ibadan, Oyo State, Nigeria | +234 000 000 0000</p>
+    <p>Open daily: 9:00 a.m. – 12:00 midnight</p>
+    <p>www.houseofromLDlife.com</p>
+    <p>© 2026 House of Rome's LD Life. All rights reserved.</p>
+  </footer>
+</body>
+</html>
